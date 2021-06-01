@@ -16,12 +16,14 @@ class BasePlayer
     @type == other.type
   end
 
-  def rate
+  def rate()
 
+    return #Rating Array
   end
   
   def guess
 
+    return #Guess Array
   end
 end
 
@@ -45,12 +47,19 @@ class Board
     @board = Array.new(spaces) { BoardSpace.new }
     @code = code
   end
+
+  def print
+    puts '-- CURRENT BOARD --'
+    @board.each do |space|
+      space.print_space
+    end
+  end
 end
 
 # A space / line where a guess and a rating live
 class BoardSpace
   def initialize
-    @space = { guess: Array.new(4), rating: Array.new(4) }
+    @space = { guess: Array.new(4) { String.new('O') }, rating: Array.new(4) { String.new('o') } }
   end
 
   def guess=(guess)
@@ -64,4 +73,15 @@ class BoardSpace
 
     @space.rating = rating
   end
+
+  def print_space
+    @space[:guess].each { |e| print "[#{e}] " }
+    print '|| '
+    @space[:rating].each { |e| print "(#{e}) " }
+    puts
+  end
 end
+
+
+board = Board.new(5, "bepis")
+board.print

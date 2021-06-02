@@ -1,6 +1,6 @@
 require './board'
 require './players'
-require '.helpers'
+require './helper'
 
 
 board = Board.new(5, "bepis")

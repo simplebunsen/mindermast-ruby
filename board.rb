@@ -1,7 +1,8 @@
 # A board in which live the guess spaces and the mastermind code 
 class Board
-  def initialize(spaces, code)
-    @board = Array.new(spaces) { BoardSpace.new }
+  def initialize(guesses, slots, code)
+    @board = Array.new(guesses) { BoardSpace.new(slots) }
+    @slots = slots
     @code = code
   end
 
@@ -15,8 +16,8 @@ end
 
 # A space / line where a guess and a rating live
 class BoardSpace
-  def initialize
-    @space = { guess: Array.new(4) { String.new('O') }, rating: Array.new(4) { String.new('o') } }
+  def initialize(slots)
+    @space = { guess: Array.new(slots) { String.new('O') }, rating: Array.new(slots) { String.new('o') } }
   end
 
   def guess=(guess)

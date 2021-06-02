@@ -11,27 +11,41 @@ class BasePlayer
     @type == other.type
   end
 
-  def rate()
-
-    return #Rating Array
+  def rate(array_from_subclasses)
+    array_from_subclasses
   end
   
-  def guess
-
-    return #Guess Array
+  def guess(array_from_subclasses)
+    array_from_subclasses
   end
 end
 
 # Computer Player that plays algorithmically
 class CPUPlayer < BasePlayer
-  def initialize(type)
-    super(type, false)
+  def initialize()
+    super(false)
+  end
+
+  def rate()
+    #big algorithm
+    rating = [1, 0, 0, 1] #sample
+    super(rating)
+  end
+
+  def guess()
+    #big algorithm
+    rating = [1, 0, 0, 1] #sample
+    super(rating)
+  end
+
+  def make_code()
+    15 # temp, make code here
   end
 end
 
 # Human Player that plays via input
 class HumanPlayer < BasePlayer
-  def initialize(type)
-    super(type, humanity)
+  def initialize)
+    super(humanity)
   end
 end

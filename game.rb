@@ -2,14 +2,11 @@ require './board'
 require './players'
 require './helper'
 
-
-board = Board.new(5, "bepis")
-board.print
-
 # Where the game logic lives
 class Game
   def initialize(gamemode)
     @gamemode = gamemode
+    @board = nil
   end
 
   def play()
@@ -22,16 +19,22 @@ class Game
       maker = HumanPlayer.new
       guesser = CPUPlayer.new
     end
-    Out.print_code_set_msg
-    board = Board.new(6, 4, maker.set_code)
-    Out.print_start_msg
-    while board.can_guess
-      board.fill_guess(guesser.guess)
-      board.fill_rating(rater.rating)
-      if board.guessed?
-        break
-      end
-    end
+
+    play_loop(guesser, maker)
+
     Out.print_win_msg
+  end
+
+  def play_loop(guesser, maker)
+    Out.print_code_set_msg
+    @board = Board.new(6, 4, maker.set_code)
+    Out.print_start_msg
+
+    while @board.can_guess?
+      @board.fill_guess(guesser.guess)
+      @board.fill_rating(rater.rate)
+
+      break if @board.guessed?
+    end
   end
 end

@@ -11,13 +11,7 @@ class BasePlayer
     @type == other.type
   end
 
-  def rate(array_from_subclasses)
-    array_from_subclasses
-  end
-  
-  def guess(array_from_subclasses)
-    array_from_subclasses
-  end
+  # implement rate, guess and make_code in the subclasses!!!
 end
 
 # Computer Player that plays algorithmically

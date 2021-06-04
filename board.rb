@@ -12,6 +12,14 @@ class Board
       space.print_space
     end
   end
+
+  def fill_guess(guess)
+    puts "guess stub"
+  end
+
+  def fill_rating(rating)
+    puts "rating stub"
+  end
 end
 
 # A space / line where a guess and a rating live

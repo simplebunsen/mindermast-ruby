@@ -1,6 +1,7 @@
 require './board'
 require './players'
 require './helper'
+require './output'
 
 # Where the game logic lives
 class Game
@@ -21,7 +22,6 @@ class Game
     end
 
     play_loop(guesser, maker)
-
     Out.print_win_msg
   end
 

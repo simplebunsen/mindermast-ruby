@@ -7,4 +7,8 @@ module InputHelper
   def self.color_to_internal(array)
     # do magic to convert color array to internal
   end
+
+  def self.parse_gamemode(gm)
+    1 # TODO
+  end
 end

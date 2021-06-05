@@ -4,6 +4,8 @@ class Board
     @board = Array.new(guesses) { BoardSpace.new(slots) }
     @slots = slots
     @code = code
+    @current_guess = 0
+    @total_guesses = guesses
   end
 
   def print
@@ -15,10 +17,19 @@ class Board
 
   def fill_guess(guess)
     puts "guess stub"
+    @current_guess += 1
   end
 
   def fill_rating(rating)
     puts "rating stub"
+  end
+
+  def can_guess?
+    @current_guess < @total_guesses
+  end
+
+  def guessed?
+    @board[@current_guess - 1].rating == [2, 2, 2, 2]
   end
 end
 
@@ -31,13 +42,17 @@ class BoardSpace
   def guess=(guess)
     return unless guess.count == 4
 
-    @space.guess = guess
+    @space[:guess] = guess
   end
 
   def rating=(rating)
     return unless rating.count == 4
 
-    @space.rating = rating
+    @space[:rating] = rating
+  end
+
+  def rating
+    @space[:rating]
   end
 
   def print_space

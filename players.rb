@@ -19,13 +19,11 @@ class CPUPlayer < BasePlayer
   def rate
     # big algorithm
     rating = [1, 0, 0, 1] # sample
-    super(rating)
   end
 
   def guess
     # big algorithm
     rating = [1, 0, 0, 1] # sample
-    super(rating)
   end
 
   def make_code

@@ -32,7 +32,9 @@ class Game
 
     while @board.can_guess?
       @board.fill_guess(guesser.guess)
+      @board.print
       @board.fill_rating(maker.rate)
+      @board.print
 
       break if @board.guessed?
     end

@@ -9,6 +9,14 @@ module InputHelper
   end
 
   def self.parse_gamemode(gm)
-    1 # TODO
+    case gm.to_i
+    when 0
+      0
+    when 1
+      1
+    else
+      puts 'invalid input, default gamemode 0 used'
+      0
+    end
   end
 end

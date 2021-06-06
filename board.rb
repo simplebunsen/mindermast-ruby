@@ -37,16 +37,17 @@ end
 class BoardSpace
   def initialize(slots)
     @space = { guess: Array.new(slots) { String.new('O') }, rating: Array.new(slots) { String.new('o') } }
+    @slots = slots
   end
 
   def guess=(guess)
-    return unless guess.count == 4
+    return unless guess.count == slots
 
     @space[:guess] = guess
   end
 
   def rating=(rating)
-    return unless rating.count == 4
+    return unless rating.count == slots
 
     @space[:rating] = rating
   end

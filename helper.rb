@@ -19,4 +19,11 @@ module InputHelper
       0
     end
   end
+
+  def self.rating_processing(num_place_color, num_color)
+    rating = []
+    num_place_color.times { rating.push(2) }
+    num_color.times { rating.push(1) }
+    rating
+  end
 end

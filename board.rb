@@ -16,12 +16,19 @@ class Board
   end
 
   def fill_guess(guess)
-    puts "guess stub"
-    @current_guess += 1
+    puts 'saving guess now'
+    @board[current_guess].guess = InputHelper.color_to_internal(guess)
   end
 
   def fill_rating(rating)
-    puts "rating stub"
+    rating.push(0) until rating.count == @slots
+
+    @board[current_guess].rating = rating
+    advance_cur_guess
+  end
+
+  def advance_cur_guess
+    @current_guess += 1
   end
 
   def can_guess?
@@ -41,14 +48,10 @@ class BoardSpace
   end
 
   def guess=(guess)
-    return unless guess.count == slots
-
     @space[:guess] = guess
   end
 
   def rating=(rating)
-    return unless rating.count == slots
-
     @space[:rating] = rating
   end
 

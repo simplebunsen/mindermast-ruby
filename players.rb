@@ -43,8 +43,7 @@ class HumanPlayer < BasePlayer
     puts 'How many pins are the right color BUT not the right place?'
     num_color = gets.chomp.to_i
     # TODO: map that to an array
-    rating = [2, 2, 1, 0]
-    return rating
+    InputHelper.rating_processing(num_place_color, num_color)
   end
 
   def guess

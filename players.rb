@@ -19,9 +19,11 @@ class CPUPlayer < BasePlayer
   def rate(board)
     # big algorithm
     code = board.code
-    guess = board.current_guess
-    num_place_color = board.reduce do |acc, el|
-      if board
+    current_space = board.current_space
+    num_place_color = guess.reduce do |acc, el|
+      if el.guess
+        #continue heeere!
+      end
     end
   end
 

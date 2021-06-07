@@ -41,7 +41,7 @@ class Board
     @board[@current_guess - 1].rating == [2, 2, 2, 2]
   end
 
-  def current_guess
+  def current_space
     @board[current_guess]
   end
 end
@@ -59,6 +59,10 @@ class BoardSpace
 
   def rating=(rating)
     @space[:rating] = rating
+  end
+
+  def guess
+    @space[:guess]
   end
 
   def rating

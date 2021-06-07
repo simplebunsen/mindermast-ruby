@@ -16,9 +16,13 @@ class CPUPlayer < BasePlayer
     super(false)
   end
 
-  def rate
+  def rate(board)
     # big algorithm
-    rating = [1, 0, 0, 1] # sample
+    code = board.code
+    guess = board.current_guess
+    num_place_color = board.reduce do |acc, el|
+      if board
+    end
   end
 
   def guess
@@ -37,12 +41,11 @@ class HumanPlayer < BasePlayer
     super(true)
   end
 
-  def rate
+  def rate(*)
     puts 'How many pins are both the right place and the right color?'
     num_place_color = gets.chomp.to_i
     puts 'How many pins are the right color BUT not the right place?'
     num_color = gets.chomp.to_i
-    # TODO: map that to an array
     InputHelper.rating_processing(num_place_color, num_color)
   end
 

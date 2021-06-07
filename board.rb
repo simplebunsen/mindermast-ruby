@@ -1,5 +1,7 @@
 # A board in which live the guess spaces and the mastermind code 
 class Board
+  attr_reader :code
+
   def initialize(guesses, slots, code)
     @board = Array.new(guesses) { BoardSpace.new(slots) }
     @slots = slots
@@ -37,6 +39,10 @@ class Board
 
   def guessed?
     @board[@current_guess - 1].rating == [2, 2, 2, 2]
+  end
+
+  def current_guess
+    @board[current_guess]
   end
 end
 

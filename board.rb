@@ -44,6 +44,10 @@ class Board
   def current_space
     @board[current_guess]
   end
+
+  def current_guess
+    current_space[:guess]
+  end
 end
 
 # A space / line where a guess and a rating live

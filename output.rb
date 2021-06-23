@@ -1,8 +1,6 @@
 require 'colorize'
 
 class Out
-  #def self.
-
   def self.print_code_set_msg
     puts "set a code now"
   end

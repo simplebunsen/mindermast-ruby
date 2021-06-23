@@ -1,36 +1,36 @@
 require './helper'
 # All players, human or computer, inherit common functionality from here
 class BasePlayer
-
   def initialize(humanity)
     @humanity = humanity
   end
 
   # implement rate, guess and make_code in the subclasses!!!
-
 end
 
 # Computer Player that plays algorithmically
 class CPUPlayer < BasePlayer
-  def initialize()
+  def initialize
+    @previous_guesses = []
     super(false)
   end
 
   def rate(board)
     # big algorithm
     code = board.code
-    current_space = board.current_space
+    current_guess = board.current_guess
 
     index = 0
-    array = current_space[:guess].reduce({}) do |acc, el|
-      el == code[index] ? acc[:num_place_color] += 1 : nil
-      code.include?(el) && el != code[index] ? acc[:num_color] += 1 : nil
+    calculated_numbers_array = current_guess.reduce({}) do |acc, el|
+      if el == code[index]
+        acc[:num_place_color] += 1
+        code[index] = 'X'
+      else
+        code.include?(el) ? acc[:num_color] += 1 : nil
+      end
       index += 1
     end
-
-    #MARKER
-
-    InputHelper.rating_processing(num_place_color, num_color)
+    InputHelper.rating_processing(calculated_numbers_array[:num_place_color], calculated_numbers_array[:num_color])
   end
 
   def guess
@@ -49,7 +49,7 @@ class HumanPlayer < BasePlayer
     super(true)
   end
 
-  def rate(board)
+  def rate(*)
     # TODO print code 
     puts 'How many pins are both the right place and the right color?'
     num_place_color = gets.chomp.to_i
